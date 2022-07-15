@@ -5,8 +5,8 @@ import './title.scss';
 
 const Title = () => {
     return (
-        <div>
-            <h1>Digital Words Processo</h1>
+        <div className="title__container">
+            <h1 className="title__main">Digital Words Process</h1>
         </div>
     )
 }

@@ -1,6 +1,6 @@
-import './App.css';
+import './App.scss';
 
-import WordsCounter from './components/title/words-counter/words-counter';
+import WordsCounter from './components/words-counter/words-counter';
 import Title from './components/title/title';
 
 function App() {
