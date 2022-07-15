@@ -20,8 +20,9 @@ const WordsCounter = () => {
         <div>
             <h2>Testing Words Counter component</h2>
             <textarea onKeyUp={handleWords}></textarea>
-            <p>Your words: {words}</p>
+            <p>Content: {words}</p>
             <p>Words number: {wordsNum ? wordsNum.length : 0}</p>
+            <p>Characters: {words.length}</p>
         </div>
     )
 }
