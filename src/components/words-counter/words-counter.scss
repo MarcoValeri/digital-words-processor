@@ -1,4 +1,6 @@
+// Import abstract files
 @import '../../assets/scss/abstract/mixins';
+@import '../../assets/scss/abstract/variables';
 
 .words-counter {
     width: 80%;
@@ -10,16 +12,45 @@
 
     &__grid {
         display: grid;
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr;
         grid-template-areas: 
-        "words-counter__textarea-container words-counter__output-container";
+        "words-counter__output-container"
+        "words-counter__textarea-container";
+    }
 
-        @include respond('md') {
-            grid-template-columns: 1fr;
-            grid-template-areas: 
-            "words-counter__output-container"
-            "words-counter__textarea-container";
+    &__output-container {
+        grid-area: words-counter__output-container;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: wrap;
+        overflow: auto;
+        margin-bottom: 2rem;
+    }
+
+    &__output {
+        max-width: 30rem;
+        font-size: 1.6rem;
+        padding: 1rem;
+        overflow-x: auto;
+        border: 1px solid $blue;
+
+        @include respond('sm') {
+            width: 100%;
+            max-width: none;
+            margin: auto;
         }
+    }
+
+    &__output-title {
+        text-transform: uppercase;
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+
+    &__output-num {
+        text-align: center;
+        font-size: 2rem;
     }
 
     &__textarea-container {
@@ -32,18 +63,13 @@
         font-size: 1.6rem;
         padding: 1rem;
         box-sizing: border-box;
-    }
+        outline: none;
+        border-radius: 10px;
+        border: 1px solid $blue;
 
-    &__output-container {
-        grid-area: words-counter__output-container;
-        overflow: auto;
-        padding: 2rem;
-    }
-
-    &__output {
-        list-style: none;
-        font-size: 1.6rem;
-        padding: 1rem;
+        &:focus {
+            border: 1px solid $green;
+        }
     }
 
 }
