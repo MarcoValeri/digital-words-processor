@@ -2,32 +2,36 @@ const ReadingTime = props => {
 
     /**
      * Create a function that gets
-     * @param int getTime
+     * @param int seconds
      * and
-     * @return string formatted time
-     * 
-     * less than 60 return seconds
-     * greater than 60 returns minutes
-     * greater 3600 returns hours
+     * @return string with
+     * formatted time like 01:15:35
      */
-    const formatTime = getTime => {
+    const formatSeconds = seconds => {
 
-        let output = 0;
+        const getHours = Math.floor(seconds / 3600);
+        const formatHours = getHours < 10 ? `0${getHours}` : getHours;
 
-        // Round the time
-        const rountTheTime = Math.round(getTime);
+        const getMinutes = Math.floor((seconds - (getHours * 3600)) / 60);
+        const formatMinutes = getMinutes < 10 ? `0${getMinutes}` : getMinutes;
 
-        if (rountTheTime === 1) {
-            output = `${rountTheTime} second`;
-        } else if (rountTheTime < 60 && rountTheTime !== 1) {
-            output = `${rountTheTime} seconds`
-        } else if (rountTheTime === 60) {
+        const getSeconds = Math.floor(seconds - (getHours * 3600) - (getMinutes * 60));
+        const formatSeconds = getSeconds < 10 ? `0${getSeconds}` : getSeconds;
+
+        let output = `Error`;
+
+        if (seconds === 1) {
+            output = `1 second`;
+        } else if (seconds < 60 && seconds !== 1) {
+            output = `${formatSeconds} seconds`;
+        } else if (seconds === 60) {
             output = `1 minute`;
-        } else if (rountTheTime > 60) {
-            const getMinutes = Math.floor(rountTheTime / 60);
-            const getSeconds = rountTheTime - (getMinutes * 60);
-            const roundSeconds = getSeconds < 10 ? `0${getSeconds}` : getSeconds;
-            output = `${getMinutes}:${roundSeconds} minutes`;
+        } else if (seconds > 60 && seconds < 3600) {
+            output = `${formatMinutes}:${formatSeconds} minutes`;
+        } else if (seconds === 3600) {
+            output = `1 hour`;
+        } else if (seconds > 3600) {
+            output = `${formatHours}:${formatMinutes}:${formatSeconds} hours`;
         }
 
         return output;
@@ -38,7 +42,7 @@ const ReadingTime = props => {
      * Create a function that determines
      * the Reading Time following this rule:
      * 1 minute for 200 words
-     * 
+     *
      * @param int or float wordsNumber
      * @return int seconds or minutes
      */
@@ -52,7 +56,7 @@ const ReadingTime = props => {
         output = timeForSingleWord * wordsNumber;
 
 
-        return formatTime(output);
+        return formatSeconds(output);
         // return output;
     }
 
