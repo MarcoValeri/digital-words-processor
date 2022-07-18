@@ -31,7 +31,7 @@ const WordsCounter = () => {
                         <h4 className="words-counter__output-title">Characters</h4>
                         <p className="words-counter__output-num">{words.length}</p>
                     </div>
-                    <ReadingTime words={wordsNum.length} />
+                    <ReadingTime words={words.length > 0 ? wordsNum.length : 0} />
                 </div>
                 <div className="words-counter__textarea-container">
                     <textarea className="words-counter__textarea" placeholder="Type or paste your text" onKeyUp={handleWords}></textarea>
