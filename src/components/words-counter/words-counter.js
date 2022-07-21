@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 // Import components
 import ReadingTime from '../reading-time/reading-time';
+import BaseOutput from '../base-output/base-output';
 
 // Import scss file
 import './words-counter.scss';
@@ -23,14 +24,8 @@ const WordsCounter = () => {
         <div className='words-counter'>
             <div className="words-counter__grid">
                 <div className="words-counter__output-container">
-                    <div className="words-counter__output">
-                        <h4 className="words-counter__output-title">Words number</h4>
-                        <p className="words-counter__output-num">{wordsNum ? wordsNum.length : 0}</p>
-                    </div>
-                    <div className="words-counter__output">
-                        <h4 className="words-counter__output-title">Characters</h4>
-                        <p className="words-counter__output-num">{words.length}</p>
-                    </div>
+                    <BaseOutput baseTitle="Words number" baseOutput={wordsNum ? wordsNum.length : 0} />
+                    <BaseOutput baseTitle="Characters" baseOutput={words.length} />
                     <ReadingTime words={words.length > 0 ? wordsNum.length : 0} />
                 </div>
                 <div className="words-counter__textarea-container">
