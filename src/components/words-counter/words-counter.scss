@@ -21,7 +21,7 @@
     &__output-container {
         grid-area: words-counter__output-container;
         display: flex;
-        justify-content: start;
+        justify-content: space-around;
         align-items: center;
         flex-wrap: wrap;
         overflow: auto;

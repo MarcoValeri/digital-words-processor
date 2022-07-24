@@ -1,13 +1,18 @@
-import './App.scss';
+import { Routes, Route, Link } from "react-router-dom";
 
-import WordsCounter from './components/words-counter/words-counter';
-import Title from './components/title/title';
+// Import components
+import Home from "./pages/home/home";
+import TextToCode from "./pages/text-to-code/text-to-code";
+
+import './App.scss';
 
 function App() {
   return (
     <>
-        <Title />
-        <WordsCounter />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/text-to-code" element={<TextToCode />} />
+      </Routes>
     </>
   );
 }
