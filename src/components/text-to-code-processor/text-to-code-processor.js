@@ -13,16 +13,17 @@ const TextToCodeProcessor = () => {
 
         let getWords = event.target.value;
         let flag = '';
+        let output = '<p>';
 
         for (let x = 0; x < getWords.length; x++) {
             if (getWords[x] === "\n") {
-                flag = "true";
+                output += `</p><p>${getWords[x]}`;
             } else {
-                flag = "false";
+                output += `${getWords[x]}`;
             }
         }
 
-        setWords(flag);
+        setWords(output);
     }
 
     return (
