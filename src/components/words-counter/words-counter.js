@@ -27,7 +27,7 @@ const WordsCounter = () => {
                 <div className="words-counter__output-container">
                     <BaseOutput baseTitle="Words number" baseOutput={wordsNum ? wordsNum.length : 0} />
                     <BaseOutput baseTitle="Characters" baseOutput={words.length} />
-                    <ReadingTime words={words.length > 0 ? wordsNum.length : 0} />
+                    <ReadingTime words={words.length > 0 && wordsNum !== null ? wordsNum.length : 0} />
                     <SentencesCounter content={words} />
                 </div>
                 <div className="words-counter__textarea-container">
