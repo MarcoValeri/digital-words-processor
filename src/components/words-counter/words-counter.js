@@ -3,8 +3,7 @@ import { useState } from 'react';
 // Import components
 import BaseOutput from '../base-output/base-output';
 import ReadingTime from '../reading-time/reading-time';
-import ParagraphsCounter from '../paragraphs-counter/paragraphs-counter';
-import SentencesCounter from '../sentences-counter/sentences-counter';
+import RegexOutput from '../regex-output/regex-output';
 
 // Import scss file
 import './words-counter.scss';
@@ -29,8 +28,8 @@ const WordsCounter = () => {
                     <BaseOutput baseTitle="Words number" baseOutput={wordsNum ? wordsNum.length : 0} />
                     <BaseOutput baseTitle="Characters" baseOutput={words.length} />
                     <ReadingTime words={words.length > 0 && wordsNum !== null ? wordsNum.length : 0} />
-                    <SentencesCounter content={words} />
-                    <ParagraphsCounter content={words} />
+                    <RegexOutput title="Sentences" content={words} regex={/[!?.]+(?=$|\s)/g} />
+                    <RegexOutput title="Paragraphs" content={words} regex={/^.+$[nr]*/gm} />
                 </div>
                 <div className="words-counter__textarea-container">
                     <textarea className="words-counter__textarea" placeholder="Type or paste your text" onKeyUp={handleWords}></textarea>
