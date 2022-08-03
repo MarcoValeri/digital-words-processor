@@ -1,4 +1,7 @@
-const ReadingTime = props => {
+// Import file style
+import './time-output.scss';
+
+const TimeOutput = ({wordsForMinute, title, content}) => {
 
     /**
      * Create a function that gets
@@ -7,7 +10,7 @@ const ReadingTime = props => {
      * @return string with
      * formatted time like 01:15:35
      */
-    const formatSeconds = seconds => {
+     const formatSeconds = seconds => {
 
         const getHours = Math.floor(seconds / 3600);
         const formatHours = getHours < 10 ? `0${getHours}` : getHours;
@@ -41,31 +44,31 @@ const ReadingTime = props => {
     /**
      * Create a function that determines
      * the Reading Time following this rule:
-     * 1 minute for 200 words
+     * 1 minute for wordsForMinute
      *
      * @param int or float wordsNumber
      * @return int seconds or minutes
      */
-    const getReadingTime = wordsNumber => {
+     const getReadingTime = wordsNumber => {
 
         let output = 0;
 
-        const words = 200;
+        const words = wordsForMinute;
         const seconds = 60;
         const timeForSingleWord = seconds / words;
         output = timeForSingleWord * wordsNumber;
 
 
         return formatSeconds(output);
-        // return output;
     }
 
     return (
         <div className="words-counter__output">
-            <h4 className="words-counter__output-title">Reading Time</h4>
-            <p className="words-counter__output-num">{getReadingTime(props.words)}</p>
+            <h4 className="words-counter__output-title">{title}</h4>
+            <p className="words-counter__output-num">{getReadingTime(content)}</p>
         </div>
     )
+
 }
 
-export default ReadingTime;
+export default TimeOutput;
