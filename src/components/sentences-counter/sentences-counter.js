@@ -12,8 +12,7 @@ const SentencesCounter = ({content}) => {
      */
     const sentencesNumber = getContent => {
 
-        // const regex = /[!?.]+(?=$|\s)/g;
-        const regex = /^.+$[nr]*/gm;
+        const regex = /[!?.]+(?=$|\s)/g;
         const sentences = getContent.match(regex);
         const getSentencsNum = sentences != null ? sentences.length : 0;
 

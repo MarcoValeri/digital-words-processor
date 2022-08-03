@@ -13,7 +13,7 @@ const ParagraphsCounter = ({content}) => {
      */
     const paragraphsNumber = getContent => {
 
-        const regex = /[.][\n]+(?=$|\s)/g;
+        const regex = /^.+$[nr]*/gm;
         const paragraphs = getContent.match(regex);
         const getParagraphsNum = paragraphs != null ? paragraphs.length : 0;
 
