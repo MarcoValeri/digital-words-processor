@@ -1,4 +1,5 @@
 // Import components
+import Footer from "../../components/footer/footer";
 import Title from "../../components/title/title";
 import WordsCounter from "../../components/words-counter/words-counter";
 
@@ -10,6 +11,7 @@ const Home = () => {
         <div>
             <Title />
             <WordsCounter />
+            <Footer />
         </div>
     )
 }

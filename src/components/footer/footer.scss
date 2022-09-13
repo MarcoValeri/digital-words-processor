@@ -1,0 +1,16 @@
+@import '../../App.scss';
+
+.footer {
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    margin-top: 10rem;
+    background-color: $black;
+
+    &__heart {
+        font-size: 2.2rem;
+        color: #f00;
+    }
+}

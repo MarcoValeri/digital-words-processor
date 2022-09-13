@@ -3,6 +3,7 @@ import { Routes, Route, Link } from "react-router-dom";
 // Import components
 import Home from "./pages/home/home";
 
+// Import style files
 import './App.scss';
 
 function App() {
