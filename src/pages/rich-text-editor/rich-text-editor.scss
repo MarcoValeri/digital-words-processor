@@ -14,8 +14,25 @@
         display: grid;
         grid-template-columns: 1fr;
         grid-template-areas:
+        "rich-text-editor__menu-container"
         "rich-text-editor__textarea-container"
         "rich-text-editor__output-container";
+    }
+
+    &__menu-container {
+        grid-area: rich-text-editor__menu-container;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    &__menu-icon {
+        font-size: 2rem;
+        padding: .5rem;
+        border: 1px solid $black;
+    }
+
+    &__menu-link-icon {
+
     }
 
     &__textarea-container {
