@@ -9,6 +9,37 @@ import './rich-text-editor.scss';
 
 const RichTextEditor = () => {
 
+    /**
+     * Create a function that get
+     * @param string getContent
+     * and
+     * @return array that contains
+     * content wrapped into html
+     * paragraph tag
+     */
+    const contentWithHtmlTags = getContent => {
+
+        const contentArr = [];
+
+        for (let i = 0; i < getContent.length; i++) {
+
+            contentArr[0] = `<p>`;
+
+            if (getContent[i] === `\n`) {
+                contentArr.push(`</p><p>`);
+            } else {
+                contentArr.push(getContent[i]);
+            }
+
+        }
+
+        // Close the paragraph at the end
+        contentArr.push(`<p>`);
+
+        return contentArr;
+
+    }
+
     // Set Hooks
     const [content, setContent] = useState('');
 
@@ -27,7 +58,7 @@ const RichTextEditor = () => {
                     <textarea className="rich-text-editor__textarea" onKeyUp={handleContent}></textarea>
                 </div>
                 <div className="rich-text-editor__output-container">
-                    { content }
+                    { contentWithHtmlTags(content) }
                 </div>
             </div>
             <Footer />
