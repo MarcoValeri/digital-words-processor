@@ -44,7 +44,17 @@ const RichTextEditor = () => {
     // Set Hooks
     const [content, setContent] = useState('');
 
-    // Event
+    // Events
+    const handleLink = (event) => {
+        event.preventDefault();
+        console.log(`Link fired`);
+    }
+
+    const handleSelect = event => {
+        const selectedContent = event.target.value.substring(event.target.selectionStart, event.target.value.selectionEnd);
+        console.log(selectedContent);
+    }
+
     const handleContent = event => {
         event.preventDefault();
         setContent(event.target.value);
@@ -56,10 +66,10 @@ const RichTextEditor = () => {
             <Navigation />
             <div className="rich-text-editor">
                 <div className="rich-text-editor__menu-container">
-                    <FaLink className="rich-text-editor__menu-icon rich-text-editor__menu-link-icon"></FaLink>
+                    <FaLink className="rich-text-editor__menu-icon rich-text-editor__menu-link-icon" onClick={handleLink}></FaLink>
                 </div>
                 <div className="rich-text-editor__textarea-container">
-                    <textarea className="rich-text-editor__textarea" onKeyUp={handleContent}></textarea>
+                    <textarea className="rich-text-editor__textarea" onKeyUp={handleContent} onSelect={handleSelect}></textarea>
                 </div>
                 <div className="rich-text-editor__output-container">
                     { contentWithHtmlTags(content) }
